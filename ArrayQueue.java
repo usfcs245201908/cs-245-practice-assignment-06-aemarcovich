@@ -20,25 +20,25 @@ public class ArrayQueue<T> implements Queue<T>
 	{
 		//Object array 
 		// arr.size*2 so you double it. 
-		T temp[]=(T[]) new Object[DEFSIZE*2];
-		for (int x=0;x<DEFSIZE;x++)
+		T temp[]=(T[]) new Object[array.length*2];
+		for (int x=0;x<array.length;x++)
 		{
-			array[x]=temp[x];
+			temp[x]=array[x];
 		}
 		array=temp;
 	}
-	public T dequeue() throws Exception
+	public T dequeue()
 	{
 		if (head>array.length)
 			head=0;
 		T item2=array[head];
 		this.head++;
 		this.size--;
-		return array[head];
+		return item2;
 	}
 	public void enqueue(T item)
 	{
-		if(this.tail>array.length)
+		if(this.tail>=array.length)
 			growarray();
 		this.size++;
 		this.array[tail]=item;

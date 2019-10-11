@@ -10,8 +10,8 @@ public class ArrayStack<T> implements Stack<T>
 	{
 		//Object array 
 		// arr.size*2 so you double it. 
-		T temp[]=(T[]) new Object[DEFSIZE*2];
-		for (int x=0;x<DEFSIZE;x++)
+		T temp[]=(T[]) new Object[array.length*2];
+		for (int x=0;x<array.length;x++)
 		{
 			temp[x]=this.array[x];
 		}
@@ -34,25 +34,25 @@ public class ArrayStack<T> implements Stack<T>
 	after the item is saved to the array.*/
 	public void push(T item)
 	{
-		if (this.size==DEFSIZE)
-			growArray();
 		this.size++;
+		if (this.size==array.length)
+			growArray();
 		this.array[front]=item;
 		this.front++;
 	}
 	// Retrives last item in stack.
-	public T peek() throws Exception
+	public T peek()
 	{
 		if(empty())
-			throw new Exception();
+			return null;
 		return array[front-1];
 	}
-	public T pop() throws Exception
+	public T pop() 
 	{
 		if (empty())
-			throw new Exception();
+			return null;
 		this.size--;
-		T item2=this.array[front];
+		T item2=this.array[front-1];
 		this.array[front]=null;
 		this.front--;
 		return item2;
