@@ -6,6 +6,10 @@ public class ArrayStack<T> implements Stack<T>
 	private T[] array;
 	private int front;
 	//private int Cap;
+	/**
+	*Growarray copies the content of the array
+	*into the an array double the size.
+	*/
 	public void growArray()
 	{
 		//Object array 
@@ -16,14 +20,17 @@ public class ArrayStack<T> implements Stack<T>
 			temp[x]=this.array[x];
 		}
 		this.array=temp;
-	}
+	}/**
+	*Constructs and anray with elements.
+	*/
 	public ArrayStack()
 	{
 		//this.Cap=cap;
 		front=0;
 		this.array=(T[]) new Object[DEFSIZE];
 	}
-	//empty chechks to see if the front stack is equal to zero.
+	/*empty chechks to see if the front stack 
+	*is equal to zero.*/
 	public boolean empty()
 	{
 		if (this.front==0)
@@ -40,13 +47,14 @@ public class ArrayStack<T> implements Stack<T>
 		this.array[front]=item;
 		this.front++;
 	}
-	// Retrives last item in stack.
+	/*Retrives last item in stack.*/
 	public T peek()
 	{
 		if(empty())
 			return null;
 		return array[front-1];
 	}
+	/*Adds item to the stack.*/
 	public T pop() 
 	{
 		if (empty())
